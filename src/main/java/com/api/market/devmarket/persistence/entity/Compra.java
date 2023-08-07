@@ -13,19 +13,23 @@ public class Compra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_compra")
     private Integer idCompra;
+
     @Column(name = "id_cliente")
     private String idCliente;
+
     private LocalDateTime fecha;
+
     @Column(name = "medio_pago")
     private String medioPago;
+
     private String comentario;
-    private Boolean estado;
-    //Con que atributo esta reladcionado ------- id_cliente con cliente
+    private String estado;
+
     @ManyToOne
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
-    //Que relación respalda esta relación--- es compra en CompraProducto
-    @OneToMany(mappedBy = "producto")
+
+    @OneToMany(mappedBy = "compra")
     private List<CompraProducto> productos;
 
     public Integer getIdCompra() {
@@ -68,11 +72,11 @@ public class Compra {
         this.comentario = comentario;
     }
 
-    public Boolean getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
