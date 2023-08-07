@@ -25,8 +25,7 @@ public class ProductService {
     public Product save(Product product) {
         return productRepository.save(product);
     }
-    public boolean deletete(int productId) {
-        productRepository.deletete(productId);
+    public boolean delete(int productId) {
         return getProduct(productId).map(product -> {
             productRepository.deletete(productId);
             return true;
